@@ -1,7 +1,11 @@
+import sys
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options as OptionsFirefox
+from trio import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
 
 def pytest_addoption(parser):
     parser.addoption("--language", action="store", default="en-gb", help="Choose interface language")

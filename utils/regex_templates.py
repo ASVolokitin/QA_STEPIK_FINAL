@@ -1,1 +1,1 @@
-COST_REGEX = r'(?<=\s)\d+[.,]\d{2}(?=\s)'
+COST_REGEX = r'\d+[.,]\d{2}(?=\s)'

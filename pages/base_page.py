@@ -32,6 +32,14 @@ class BasePage():
         return True
     
     
+    def is_element_clickable(self, how, what):
+        try:
+            element = WebDriverWait(self.browser, 5).until(EC.element_to_be_clickable((how, what)))
+        except TimeoutException:
+            return False
+        return True
+    
+    
     def is_element_present(self, how, what):
         try:
             element = WebDriverWait(self.browser, 5).until(EC.presence_of_element_located((how, what)))
@@ -51,6 +59,11 @@ class BasePage():
     
     def open(self):
         self.browser.get(self.url)
+        
+    
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                 " probably unauthorised user"
         
     
     def should_be_login_link(self):

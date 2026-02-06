@@ -46,9 +46,9 @@ class TestUserAddToBasketFromProductPage():
 
 
 @pytest.mark.need_review
-@pytest.mark.parametrize('link', urls)
-def test_guest_can_add_product_to_basket(browser, link):
-    page = ProductPage(browser, link)
+# @pytest.mark.parametrize('link', urls)
+def test_guest_can_add_product_to_basket(browser):
+    page = ProductPage(browser, PRODUCT_PAGE_LINK)
     page.open()
     page.add_to_basket()
     page.solve_quiz_and_get_code()

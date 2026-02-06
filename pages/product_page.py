@@ -53,3 +53,11 @@ class ProductPage(BasePage):
 
         assert header_basket_total_price == popup_basket_total_price, f"different total basket prices in header and popup (in header: {header_basket_total_price}, in popup: {popup_basket_total_price})"
     
+    def should_not_be_success_message_after_adding_product_to_basket(self) -> None:
+        if not self.is_not_element_present(*ProductPageLocators.POPUP_ADDED_TO_BASKET_BOOK_TITLE):
+            pytest.fail("Success message should not be seen")
+
+    def should_disappear_success_message_after_adding_product_to_basket(self) -> None:
+        if not self.is_disappeared(*ProductPageLocators.POPUP_ADDED_TO_BASKET_BOOK_TITLE):
+             pytest.fail("Success message should disappear")
+    
